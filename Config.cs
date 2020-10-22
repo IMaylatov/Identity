@@ -50,6 +50,8 @@ namespace SofTrust.IdentityServer
                     },
 
                     AllowAccessTokensViaBrowser = true
+
+                    AllowOfflineAccess = true
                 }
             };
     }
