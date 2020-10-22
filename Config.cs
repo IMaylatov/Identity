@@ -49,7 +49,7 @@ namespace SofTrust.IdentityServer
                         "softrust_report_api"
                     },
 
-                    AllowAccessTokensViaBrowser = true
+                    AllowAccessTokensViaBrowser = true,
 
                     AllowOfflineAccess = true
                 }
