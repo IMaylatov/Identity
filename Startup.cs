@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SofTrust.IdentityServerHost.Quickstart.UI;
+using System;
 
 namespace SofTrust.IdentityServer
 {
@@ -19,13 +20,19 @@ namespace SofTrust.IdentityServer
         {
             services.AddControllersWithViews();
 
-            var builder = services.AddIdentityServer()
+            var builder = services.AddIdentityServer(options =>
+                {
+                    options.Authentication.CookieLifetime = TimeSpan.FromDays(30);
+                    options.Authentication.CookieSlidingExpiration = true;
+                })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddTestUsers(TestUsers.Users);
 
             builder.AddDeveloperSigningCredential();
+
+            services.AddAuthentication(x => x.DefaultAuthenticateScheme = IdentityServer4.IdentityServerConstants.DefaultCookieAuthenticationScheme);
         }
 
         public void Configure(IApplicationBuilder app)
