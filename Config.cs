@@ -35,9 +35,9 @@ namespace SofTrust.IdentityServer
 
                     RequireClientSecret = false,
                     
-                    RedirectUris = { "http://localhost:3000/signin-oidc", "http://localhost:3000/silentrenew" },
+                    RedirectUris = { "http://localhost:3000/auth/signin-oidc", "http://localhost:3000/auth/silentrenew" },
 
-                    PostLogoutRedirectUris = { "http://localhost:3000/logout/callback" },
+                    PostLogoutRedirectUris = { "http://localhost:3000/auth/logout/callback" },
 
                     AllowedCorsOrigins = { "http://localhost:3000" },
 
